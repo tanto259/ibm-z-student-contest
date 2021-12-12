@@ -1,0 +1,9 @@
+-- Set command options for Db2 CLP to remove output to sysout
+UPDATE COMMAND OPTIONS USING DisplayOutput OFF
+UPDATE COMMAND OPTIONS USING StripHeaders ON
+-- Connect to the Db2 instance
+CONNECT TO 204.90.115.200:5040/DALLASC
+-- Get encryption password
+SELECT REMARKS FROM SYSIBM.SYSCOLUMNS WHERE TBNAME='LOCATORS' AND NAME='LCODE' AND TBCREATOR='?SCHEMA?'
+-- Stop Db2 CLP
+TERMINATE
