@@ -1,0 +1,21 @@
+//DROP4   JOB 1
+//STEP1   EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*
+//INDD1    DD DSN=?DATANAME?,DISP=SHR
+//OUTDD1   DD DSN=&&DSDATA,DISP=(,PASS),
+//         SPACE=(CYL,(1,5),RLSE),UNIT=SYSDA,
+//         DCB=(RECFM=VBA,LRECL=125)    
+//SYSIN    DD *
+   REPRO INFILE(INDD1) OUTFILE(OUTDD1)
+/*
+//STEP2    EXEC PGM=SORT
+//SYSOUT   DD SYSOUT=*
+//SORTIN   DD DSN=&&DSDATA,DISP=SHR
+//SORTOUT  DD PATH='?PATH?', 
+//          PATHDISP=(KEEP,DELETE),                        
+//          PATHMODE=(SIRUSR,SIWUSR,SIRGRP,SIROTH),                      
+//          PATHOPTS=(OCREAT,ORDWR),                       
+//          FILEDATA=TEXT
+//SYSIN    DD *
+   OPTION COPY
+/*
